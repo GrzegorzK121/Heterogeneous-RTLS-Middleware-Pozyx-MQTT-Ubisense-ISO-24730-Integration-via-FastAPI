@@ -1,9 +1,9 @@
 
-# 🧪 RTLS Middleware - Automated Test Suite by using PyTest
+# RTLS Middleware - Automated Test Suite by using PyTest
 
 This directory contains a complete set of unit and integration tests for the multi-protocol RTLS data fusion engine (Pozyx MQTT & Ubisense UDP). The tests are designed to verify the math behind the algorithms, handle network errors, and test async communication without needing any physical hardware.
 
-## 🛠️ Test Structure and Scope
+## Test Structure and Scope
 
 The test suite (`test_rtls.py`) covers 4 main layers of the middleware application:
 
