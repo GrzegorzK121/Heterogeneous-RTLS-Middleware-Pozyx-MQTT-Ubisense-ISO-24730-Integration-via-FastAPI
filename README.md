@@ -18,35 +18,31 @@ flowchart TB
         U[Ubisense System]:::hardware -->|UDP / Binary stream| R2(UDP Datagram Protocol):::parser
     end
 
-    subgraph Data Ingestion & Preprocessing
+    subgraph Data_Ingestion [Data Ingestion & Preprocessing]
         R1 --> P1[JSON Parser & Dynamic Offsetting]:::parser
         R2 --> P2[Struct Unpack & Static Offsetting]:::parser
         P1 --> CS[(In-Memory Current State)]:::storage
         P2 --> CS
     end
 
-    subgraph Core Fusion Engine Loop
+    subgraph Core_Fusion [Core Fusion Engine Loop]
         CS --> TO{Timeout Check < 1.5s}:::logic
         TO --> ZL{Zone Validation Logic}:::logic
         ZL -->|X < 20m| Z1[Pozyx Exclusive Zone]:::engine
         ZL -->|X > 23.5m| Z2[Ubisense Exclusive Zone]:::engine
         ZL -->|20m < X < 23.5m| Z3[Weighted Average Fusion]:::engine
-        
         Z1 --> VTS[Virtual Tag State Calculation]:::engine
         Z2 --> VTS
         Z3 --> VTS
     end
 
-    subgraph Data Distribution & Export
+    subgraph Distribution [Data Distribution & Export]
         VTS --> WSM((WebSocket Manager)):::output
         VTS --> DR[(Data Recorder)]:::storage
-        
         WSM --> F1[Live Web Corridors HTML5]:::output
         WSM --> F2[Vertical Mobile Maps]:::output
-        
         DR --> C1[Continuous CSV Logging]:::storage
         DR --> C2[ML Raw Data Record]:::storage
-        DR --> C3[Ground Truth Extraction]:::storage
     end
 
 ## 🚀 How It Works: The RTLS Integration Engine
