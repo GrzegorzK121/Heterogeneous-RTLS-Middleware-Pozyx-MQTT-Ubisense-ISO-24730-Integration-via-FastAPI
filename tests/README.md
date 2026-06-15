@@ -34,7 +34,7 @@ The business logic for switching Pozyx compensation zones is tested using `@pyte
 
 ---
 
-## ⚙️ How to Run Locally
+## How to Run Locally
 
 You should run the tests inside a dedicated virtual environment to isolate project dependencies.
 
@@ -73,7 +73,7 @@ test_rtls.py::test_connection_manager_connect_and_broadcast PASSED              
 
 ---
 
-## 🧠 Edge Cases Analysis
+## Edge Cases Analysis
 
 The test code takes into account the hardware specifics of both RTLS systems:
 
